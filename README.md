@@ -7,7 +7,7 @@ Add the following to your top-level `repositories` block:
 maven { url "https://hephaestus.dev/release" }
 ```
 
-And under `depndencies`:
+And under `dependencies`:
 ```groovy
 modImplementation "dev.hephaestus:seedy-behavior:${project.seedy_version}"
 include "dev.hephaestus:seedy-behavior:${project.seedy_version}"
