@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.hephaestus.seedy.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "world.biome.source.MultiNoiseBiomeSourceMixin",
+    "world.gen.GeneratorOptionsMixin",
+    "world.gen.chunk.NoiseChunkGeneratorMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

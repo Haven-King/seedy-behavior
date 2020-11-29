@@ -1,0 +1,8 @@
+accessWidener	v1	named
+accessible	method	net/minecraft/entity/SpawnRestriction	register	(Lnet/minecraft/entity/EntityType;Lnet/minecraft/entity/SpawnRestriction$Location;Lnet/minecraft/world/Heightmap$Type;Lnet/minecraft/entity/SpawnRestriction$SpawnPredicate;)V
+mutable     field   net/minecraft/world/biome/source/MultiNoiseBiomeSource  seed    J
+accessible class net/minecraft/world/biome/source/MultiNoiseBiomeSource$NoiseParameters
+accessible  field   net/minecraft/world/gen/chunk/NoiseChunkGenerator   seed    J
+mutable     field   net/minecraft/world/gen/chunk/NoiseChunkGenerator   seed    J
+accessible  field   net/minecraft/world/gen/chunk/ChunkGenerator   worldSeed    J
+mutable     field   net/minecraft/world/gen/chunk/ChunkGenerator   worldSeed    J

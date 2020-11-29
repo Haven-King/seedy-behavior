@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "seedy-behavior",
+  "version": "${version}",
+  "name": "Seedy Behavior",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/seedy-behavior/icon.png",
+  "environment": "*",
+  "entrypoints": {},
+  "mixins": [
+    "seedy-behavior.mixins.json"
+  ],
+  "accessWidener": "seedy.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.10.8",
+    "minecraft": ">=1.16.2"
+  }
+}
