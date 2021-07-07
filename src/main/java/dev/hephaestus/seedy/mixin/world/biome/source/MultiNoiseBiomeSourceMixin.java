@@ -25,6 +25,7 @@ import java.util.function.Supplier;
 public class MultiNoiseBiomeSourceMixin {
 	@Shadow private long seed;
 	@Unique private static long LAST_SEED = SeedSupplier.MARKER;
+	@Unique private static long counter = 0;
 
 	@Redirect(method = "method_30827(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;", at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/codecs/PrimitiveCodec;fieldOf(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;", ordinal = 0))
 	private static MapCodec<Long> giveUsRandomSeeds(PrimitiveCodec<Long> codec, final String name) {
@@ -42,6 +43,7 @@ public class MultiNoiseBiomeSourceMixin {
 
 	@Redirect(method = "<init>(JLjava/util/List;Lnet/minecraft/world/biome/source/MultiNoiseBiomeSource$NoiseParameters;Lnet/minecraft/world/biome/source/MultiNoiseBiomeSource$NoiseParameters;Lnet/minecraft/world/biome/source/MultiNoiseBiomeSource$NoiseParameters;Lnet/minecraft/world/biome/source/MultiNoiseBiomeSource$NoiseParameters;Ljava/util/Optional;)V", at = @At(value = "NEW", target = "net/minecraft/world/gen/ChunkRandom"))
 	private ChunkRandom useOurSeed(long seed) {
-		return new ChunkRandom(this.seed);
+		if (counter == 4) counter = 0;
+		return new ChunkRandom(this.seed + counter++);
 	}
 }
