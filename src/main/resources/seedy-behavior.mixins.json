@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "dev.hephaestus.seedy.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "mixins": [
     "world.biome.source.MultiNoiseBiomeSourceMixin",
     "world.gen.GeneratorOptionsMixin",
