@@ -22,12 +22,29 @@ public abstract class NoiseChunkGeneratorMixin extends ChunkGenerator {
 		super(biomeSource, structuresConfig);
 	}
 
-	@Redirect(method = "method_28550(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;", at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/codecs/PrimitiveCodec;fieldOf(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;", ordinal = 0))
+	@Redirect(
+		method = "method_28550(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;",
+		at = @At(
+			value = "INVOKE",
+			target = "Lcom/mojang/serialization/codecs/PrimitiveCodec;fieldOf(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;",
+			ordinal = 0
+		)
+	)
 	private static MapCodec<Long> giveUsRandomSeeds(PrimitiveCodec<Long> codec, final String name) {
 		return codec.fieldOf(name).orElseGet(SeedSupplier::getSeed);
 	}
 
-	@ModifyVariable(method = "<init>(Lnet/minecraft/world/biome/source/BiomeSource;Lnet/minecraft/world/biome/source/BiomeSource;JLjava/util/function/Supplier;)V", at = @At(value = "FIELD", target = "Lnet/minecraft/world/gen/chunk/NoiseChunkGenerator;seed:J", opcode = Opcodes.PUTFIELD, shift = At.Shift.AFTER), ordinal = 0)
+	@ModifyVariable(
+		method = "<init>(Lnet/minecraft/util/registry/Registry;Lnet/minecraft/world/biome/source/BiomeSource;Lnet/minecraft/world/biome/source/BiomeSource;JLjava/util/function/Supplier;)V",
+		at = @At(
+			value = "FIELD",
+			target = "Lnet/minecraft/world/gen/chunk/NoiseChunkGenerator;seed:J",
+			opcode = Opcodes.PUTFIELD,
+			shift = At.Shift.AFTER
+		),
+		ordinal = 0,
+		argsOnly = true
+	)
 	private long replaceSeed(long seed) {
 		if (seed == SeedSupplier.MARKER) {
 			return LAST_SEED;
