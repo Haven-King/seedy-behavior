@@ -24,6 +24,7 @@ atlassian-ide-plugin.xml
 
 # Package Files #
 *.jar
+!gradle/
 *.war
 *.nar
 *.ear
